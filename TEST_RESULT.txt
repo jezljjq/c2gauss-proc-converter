@@ -1,0 +1,16 @@
+V32 patch local smoke/test result
+
+Command:
+  cd c2gauss_v32_patch && python -m pytest -q
+
+Result:
+  4 passed
+
+Command:
+  cd c2gauss_v32_patch && python scripts/run_v32_smoke.py
+
+Key expected output:
+  V_SRELEBOOK_BOOK_NO := substring(R.tr_book_no FROM 3 FOR 8);
+  V_SRELEBOOK_TRAN_AMT := CAST(NULLIF(trim(R.tr_tran_amt), '') AS NUMERIC);
+  V_SRELEBOOK_REMARK := trim(R.remark);
+  V_SRELEBOOK_NO_SRC := NULL; -- TODO V32: 未找到来源字段，详见 review.md
